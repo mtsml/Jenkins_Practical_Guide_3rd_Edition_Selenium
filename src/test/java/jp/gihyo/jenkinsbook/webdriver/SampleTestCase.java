@@ -29,12 +29,13 @@ public class SampleTestCase {
 		System.setProperty("webdriver.chrome.driver", "/opt/chromedriver");
 		ChromeOptions options = new ChromeOptions();
 		options.setBinary("/usr/bin/google-chrome");
-		options.addArguments("--headless");
-		options.addArguments("--no-sandbox");
-		options.addArguments("--disable-gpu");
 		options.addArguments("--disable-dev-shm-usage"); 
 		options.addArguments("disable-infobars");
 		options.addArguments("--disable-extensions");
+		options.addArguments("--disable-gpu");
+		options.addArguments("--no-sandbox");
+		options.addArguments("--window-size=1920,1080");
+		options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}
 	
