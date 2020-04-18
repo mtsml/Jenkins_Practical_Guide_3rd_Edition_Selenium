@@ -29,8 +29,10 @@ public class SampleTestCase {
 		System.setProperty("webdriver.chrome.driver", "/opt/chromedriver");
 		ChromeOptions options = new ChromeOptions();
 		options.setBinary("/usr/bin/google-chrome");
-		options.addArguments("--disable-setuid-sandbox");
-		// options.addArguments("--disable-dev-shm-usage"); 
+		options.addArguments("--disable-dev-shm-usage");
+		options.addArguments("start-maximized");
+		options.addArguments("disable-infobars");
+		options.addArguments("--disable-extensions"); 
 		options.addArguments("--no-sandbox");
 		options.addArguments("--headless");
 		options.addArguments("--disable-gpu");
