@@ -26,14 +26,16 @@ public class SampleTestCase {
 	@BeforeClass
 	public static void setUpClass() throws IOException {
 		prop.load(new FileInputStream("target/test-classes/selenium.properties"));
-		System.setProperty("webdriver.chrome.driver", "/opt/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 		ChromeOptions options = new ChromeOptions();
-		options.setBinary("/usr/bin/google-chrome");
-		options.addArguments("--disable-setuid-sandbox");
-		// options.addArguments("--disable-dev-shm-usage"); 
+		options.addArguments("--disable-dev-shm-usage");
+		options.addArguments("start-maximized");
+		options.addArguments("disable-infobars");
+		options.addArguments("--disable-extensions"); 
 		options.addArguments("--no-sandbox");
 		options.addArguments("--headless");
 		options.addArguments("--disable-gpu");
+		options.setBinary("/usr/bin/google-chrome");
 		driver = new ChromeDriver(options);
 	}
 	
