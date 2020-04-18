@@ -28,9 +28,13 @@ public class SampleTestCase {
 		prop.load(new FileInputStream("target/test-classes/selenium.properties"));
 		System.setProperty("webdriver.chrome.driver", "/opt/chromedriver");
 		ChromeOptions options = new ChromeOptions();
+		options.setBinary("/usr/bin/google-chrome");
 		options.addArguments("--headless");
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-gpu");
+		options.addArguments("--disable-dev-shm-usage"); 
+		options.addArguments("disable-infobars");
+		options.addArguments("--disable-extensions");
 		driver = new ChromeDriver(options);
 	}
 	
