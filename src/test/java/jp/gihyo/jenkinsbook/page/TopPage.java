@@ -12,16 +12,16 @@ public class TopPage {
 	}
 
     public String getFirstNameLabel() {
-    	return driver.findElement(By.xpath("//label[@for='FirstName']")).getText();
+    	return driver.findElement(By.xpath("/html/body/form/label[2]")).getText();
     }
     
     public String getLastNameLabel() {
-    	return driver.findElement(By.xpath("//label[@for='LastName']")).getText();
+    	return driver.findElement(By.xpath("/html/body/form/label[1]")).getText();
     }
     
     public boolean hasFirstNameInput() {
 		try {
-			driver.findElement(By.xpath("//input[@type='text' and @name='FirstName']"));
+			driver.findElement(By.xpath("/html/body/form/input[2]"));
 		} catch(NoSuchElementException e) {
 			return false;
 		}
@@ -31,7 +31,7 @@ public class TopPage {
     
     public boolean hasLastNameInput() {
 		try {
-			driver.findElement(By.xpath("//input[@type='text' and @name='LastName']"));
+			driver.findElement(By.xpath("/html/body/form/input[1]"));
 		} catch(NoSuchElementException e) {
 			return false;
 		}
@@ -41,7 +41,7 @@ public class TopPage {
     
     public boolean hasSubmit() {
 		try {
-			driver.findElement(By.xpath("//input[@type='submit' and @name='send']"));
+			driver.findElement(By.xpath("/html/body/form/input[4]"));
 		} catch(NoSuchElementException e) {
 			return false;
 		}
@@ -50,17 +50,17 @@ public class TopPage {
     }
     
     public void setFirstName(String firstName) {
-        driver.findElement(By.xpath("//input[@type='text' and @name='FirstName']")).clear();
-        driver.findElement(By.xpath("//input[@type='text' and @name='FirstName']")).sendKeys(firstName);
+        driver.findElement(By.xpath("/html/body/form/input[2]")).clear();
+        driver.findElement(By.xpath("/html/body/form/input[2]")).sendKeys(firstName);
     }
     
     public void setLastName(String lastName) {
-        driver.findElement(By.xpath("//input[@type='text' and @name='LastName']")).clear();
-        driver.findElement(By.xpath("//input[@type='text' and @name='LastName']")).sendKeys(lastName);
+        driver.findElement(By.xpath("/html/body/form/input[1]")).clear();
+        driver.findElement(By.xpath("/html/body/form/input[1]")).sendKeys(lastName);
     }
 
     public void submit() {
 		driver.findElement(By.xpath(
-				"//input[@type='submit' and @name='send']")).submit();
+				"/html/body/form/input[4]")).submit();
 	}
 }
