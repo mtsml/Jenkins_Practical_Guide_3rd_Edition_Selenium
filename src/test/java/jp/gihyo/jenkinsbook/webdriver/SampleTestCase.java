@@ -28,7 +28,6 @@ public class SampleTestCase {
 		prop.load(new FileInputStream("target/test-classes/selenium.properties"));
 		System.setProperty("webdriver.chrome.driver", "/opt/chromedriver");
 		ChromeOptions options = new ChromeOptions();
-		options.setBinary("/opt/chromedriver.exe");
 		options.addArguments("--headless");
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-gpu");
