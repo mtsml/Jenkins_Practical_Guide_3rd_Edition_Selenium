@@ -1,17 +1,10 @@
 package jp.gihyo.jenkinsbook.page;
 
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.io.File;
-import java.io.IOException;
-
-import org.apache.commons.io.FileUtils;
 
 public class TopPage {
 	private WebDriver driver;
@@ -27,19 +20,7 @@ public class TopPage {
     }
     
     public String getLastNameLabel() {
-		try {
-			return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/form/label[1]"))).getText();
-		} catch (Exception e) {
-			System.out.println("エラー");
-			File tempFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-			try {
-				FileUtils.moveFile(tempFile, new File("/var/lib/jenkins/workspace/SeleniumJOB/err.png"));
-			} catch (IOException ioe) {
-				ioe.printStackTrace();
-			}
-		}
-
-		return null;
+    	return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/form/label[1]"))).getText();
     }
     
     public boolean hasFirstNameInput() {
