@@ -3,25 +3,29 @@ package jp.gihyo.jenkinsbook.page;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TopPage {
 	private WebDriver driver;
-	
+	private WebDriverWait wait;
+
 	public TopPage(WebDriver driver) {
 		this.driver = driver;
+		this.wait = new WebDriverWait(this.driver, 10);
 	}
 
     public String getFirstNameLabel() {
-    	return driver.findElement(By.xpath("/html/body/form/label[2]")).getText();
+    	return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/form/label[2]"))).getText();
     }
     
     public String getLastNameLabel() {
-    	return driver.findElement(By.xpath("/html/body/form/label[1]")).getText();
+    	return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/form/label[1]"))).getText();
     }
     
     public boolean hasFirstNameInput() {
 		try {
-			driver.findElement(By.xpath("/html/body/form/input[2]"));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/form/input[2]")));
 		} catch(NoSuchElementException e) {
 			return false;
 		}
@@ -31,7 +35,7 @@ public class TopPage {
     
     public boolean hasLastNameInput() {
 		try {
-			driver.findElement(By.xpath("/html/body/form/input[1]"));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/form/input[1]")));
 		} catch(NoSuchElementException e) {
 			return false;
 		}
@@ -41,7 +45,7 @@ public class TopPage {
     
     public boolean hasSubmit() {
 		try {
-			driver.findElement(By.xpath("/html/body/form/input[4]"));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/form/input[4]")));
 		} catch(NoSuchElementException e) {
 			return false;
 		}
@@ -50,17 +54,17 @@ public class TopPage {
     }
     
     public void setFirstName(String firstName) {
-        driver.findElement(By.xpath("/html/body/form/input[2]")).clear();
-        driver.findElement(By.xpath("/html/body/form/input[2]")).sendKeys(firstName);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/form/input[2]"))).clear();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/form/input[2]"))).sendKeys(firstName);
     }
     
     public void setLastName(String lastName) {
-        driver.findElement(By.xpath("/html/body/form/input[1]")).clear();
-        driver.findElement(By.xpath("/html/body/form/input[1]")).sendKeys(lastName);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/form/input[1]"))).clear();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/form/input[1]"))).sendKeys(lastName);
     }
 
     public void submit() {
-		driver.findElement(By.xpath(
-				"/html/body/form/input[4]")).submit();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+				"/html/body/form/input[4]"))).submit();
 	}
 }
