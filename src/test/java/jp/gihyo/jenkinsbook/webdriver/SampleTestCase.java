@@ -47,7 +47,6 @@ public class SampleTestCase {
 	@Test
 	public void testNormal01() {
 		driver.get(prop.getProperty("baseUrl") + "/sampleproject");
-		
 		TopPage topPage = new TopPage(driver);
 		assertEquals("名字", topPage.getLastNameLabel());
 		assertEquals("名前", topPage.getFirstNameLabel());
